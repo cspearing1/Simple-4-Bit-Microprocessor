@@ -61,7 +61,8 @@ docs/          Block diagrams, waveform, synthesis schematic
 ```
 
 ## Simulation
-Tools: Xilinx Vivado. [Say how to run: e.g. open `tb/<top_tb>.v` as the simulation top and run behavioural simulation.]
+Tools: Xilinx Vivado. 
+To run: open `tb/<top_tb>.v` as the simulation top and run behavioural simulation.
 
 ![Multiply simulation](docs/multiply_waveform.png)
 

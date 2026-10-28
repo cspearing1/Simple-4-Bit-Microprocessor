@@ -70,9 +70,10 @@ The testbench enters 15 and 10 on the switches and steps through the shift-and-a
 ## Hardware demonstration
 Implemented on a Digilent Nexys 4 DDR (Xilinx Artix-7) using the 4 on-board switches for input. The 8-bit result is shown in binary on the 8 on-board LEDs, and a push-button steps the program one instruction at a time.
 
-Synthesised schematic: `docs/synthesised_schematic.png`.
-
-[Add a photo of the board, and describe your own demo program.]
+Synthesised schematic:
+![Synthesised schematic](docs/synthesised_schematic.png)
 
 ## What I learned
-[Two or three sentences: for example datapath/control split, instruction decoding, synchronous design and testing each block before integrating.]
+Building this processor taught me how a digital system divides into a datapath and a hardwired control unit. I wrote the instruction decoder myself, turning a 4-bit opcode and a one-hot timing signal into the enables and ALU controls for each phase of the instruction cycle. Designing around a single synchronous clock with enable-controlled registers, and testing each block before integrating, made debugging much faster.
+
+Testing exposed a bug where larger operands lost their upper bits when shifted left, giving wrong products. Tracing the waveform showed the shifter was truncating the result, so I widened the shifter path to 8 bits. It taught me to test corner cases such as 15 × 15 as well as small numbers.
